@@ -19,14 +19,15 @@ SPDX-License-Identifier: MIT
 
 /** @file calculator.c
  * @brief Implementación de una calculadora simple que soporta operaciones básicas.
- * @author Bayona Franco Gabriel <
- *
+ * @author Bayona, Franco Gabriel
+ **/
+
 /* === Headers files inclusions ==================================================================================== */
 
 #include "calculator.h"
-
 #include <stdlib.h>
 #include <string.h>
+
 /* === Macros definitions ========================================================================================== */
 
 #ifndef OPERATIONS_MAX
@@ -65,12 +66,6 @@ static operation_t FindOperation(calculator_t calculator, char operator);
 
 /* === Private function definitions ================================================================================ */
 
-/**
- * @brief Busca una operación en la calculadora por su operador
- * @param calculator Puntero a la calculadora
- * @param operator Carácter que representa el operador de la operación
- * @return Puntero a la operación encontrada o NULL si no se encuentra
- */
 static operation_t FindOperation(calculator_t calculator, char operator) {
     operation_t current = calculator->operations;
     while (current != NULL) {
@@ -85,10 +80,6 @@ static operation_t FindOperation(calculator_t calculator, char operator) {
 }
 /* === Public function implementation ============================================================================== */
 
-/*********************************************************************************************************************
- * @brief Crea una nueva calculadora
- * @return Puntero a la nueva calculadora o NULL si no se pudo crear
- *********************************************************************************************************************/
 calculator_t CalculatorCreate(void) {
     calculator_t self = malloc(sizeof(struct calculator_s));
     if (self) {
@@ -96,14 +87,6 @@ calculator_t CalculatorCreate(void) {
     }
     return self;
 }
-
-/*********************************************************************************************************************
- * @brief Agrega una operación a la calculadora
- * @param calculator Puntero a la calculadora
- * @param operator Carácter que representa el operador de la operación
- * @param function Función que implementa la operación
- * @return true si se agregó correctamente, false en caso contrario
- *********************************************************************************************************************/
 
 bool CalculatorAddOperation(calculator_t calculator, char operator, operation_func_t function) {
     if (!calculator || !function || FindOperation(calculator, operator)) {
@@ -121,12 +104,6 @@ bool CalculatorAddOperation(calculator_t calculator, char operator, operation_fu
     return false;
 }
 
-/*********************************************************************************************************************
- * @brief Calcula el resultado de una expresión matemática
- * @param calculator Puntero a la calculadora
- * @param expression Cadena de caracteres que representa la expresión matemática
- * @return Resultado de la operación o 0 si no se pudo calcular
- *********************************************************************************************************************/
 int CalculatorCalculate(calculator_t calculator, const char * expression) {
     int a = 0, b = 0;
     char operator = 0;
@@ -153,42 +130,18 @@ int CalculatorCalculate(calculator_t calculator, const char * expression) {
     return result;
 }
 
-/*********************************************************************************************************************
- * @brief Funciones de operaciones matemáticas
- * @param a Primer operando
- * @param b Segundo operando
- * @return Resultado de la operación
- *********************************************************************************************************************/
 int OperationAdd(int a, int b) {
     return a + b;
 }
 
-/*********************************************************************************************************************
- * @brief Funciones de operaciones matemáticas
- * @param a Primer operando
- * @param b Segundo operando
- * @return Resultado de la operación
- *********************************************************************************************************************/
 int OperationSubtract(int a, int b) {
     return a - b;
 }
 
-/*********************************************************************************************************************
- * @brief Funciones de operaciones matemáticas
- * @param a Primer operando
- * @param b Segundo operando
- * @return Resultado de la operación
- *********************************************************************************************************************/
 int operationDivide(int a, int b) {
     return b != 0 ? a / b : 0;
 }
 
-/*********************************************************************************************************************
- * @brief Funciones de operaciones matemáticas
- * @param a Primer operando
- * @param b Segundo operando
- * @return Resultado de la operación
- *********************************************************************************************************************/
 int operationMultiply(int a, int b) {
     return a * b;
 }

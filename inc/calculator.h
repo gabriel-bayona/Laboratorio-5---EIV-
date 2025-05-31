@@ -18,15 +18,18 @@ SPDX-License-Identifier: MIT
 *********************************************************************************************************************/
 /** @file calculator.h
  * @brief Declaración de una calculadora simple que soporta operaciones básicas.
- * @author Bayona Franco Gabriel <
-
+ * @author Bayona, Franco Gabriel <
+ *
+ *
+ * */
 
 #ifndef CALCULATOR_H_
 #define CALCULATOR_H_
 
+/* === Headers files inclusions ==================================================================================== */
+
 #include <stdbool.h>
 #include <stdint.h>
-/* === Headers files inclusions ==================================================================================== */
 
 /* === Header for C++ compatibility ================================================================================ */
 
@@ -41,19 +44,67 @@ extern "C" {
 /** Tipo de datos para el objeto calculadora */
 typedef struct calculator_s * calculator_t;
 
+/** Tipo de datos para las funciones de operación */
 typedef int (*operation_func_t)(int, int);
 
 /* === Public variable declarations ================================================================================ */
 
 /* === Public function declarations ================================================================================ */
+
+/*********************************************************************************************************************
+ * @brief Crea una nueva calculadora
+ * @return Puntero a la nueva calculadora o NULL si no se pudo crear
+ *********************************************************************************************************************/
 calculator_t CalculatorCreate(void);
 
+/*********************************************************************************************************************
+ * @brief Agrega una operación a la calculadora
+ * @param calculator Puntero a la calculadora
+ * @param operator Carácter que representa el operador de la operación
+ * @param function Función que implementa la operación
+ * @return true si se agregó correctamente, false en caso contrario
+ *********************************************************************************************************************/
 bool CalculatorAddOperation(calculator_t calculator, char operator, operation_func_t operation);
+
+/*********************************************************************************************************************
+ * @brief Calcula el resultado de una expresión matemática
+ * @param calculator Puntero a la calculadora
+ * @param expression Cadena de caracteres que representa la expresión matemática
+ * @return Resultado de la operación o 0 si no se pudo calcular (por ejemplo, division por cero)
+ *********************************************************************************************************************/
 int CalculatorCalculate(calculator_t calculator, const char * expression);
 
+/*********************************************************************************************************************
+ * @brief Funcion para calcular la suma de dos números
+ * @param a Primer sumando
+ * @param b Segundo sumando
+ * @return Resultado de la suma
+ *********************************************************************************************************************/
 int OperationAdd(int a, int b);
+
+/*********************************************************************************************************************
+ * @brief Funciones para calcular la resta de dos números
+ * @param a Minuendo
+ * @param b Sustraendo
+ * @return Resultado de la resta
+ *********************************************************************************************************************/
 int OperationSubtract(int a, int b);
+
+/*********************************************************************************************************************
+ * @brief Funciones para calcular el producto de dos números
+ * @param a Primer factor
+ * @param b Segundo factor
+ * @return Resultado de la multiplicación
+ *********************************************************************************************************************/
 int operationMultiply(int a, int b);
+
+/*********************************************************************************************************************
+ * @brief Funciones para calcular la división de dos números
+ * Nota: Si el divisor es 0, se retorna 0 para evitar división por cero.
+ * @param a Dividendo
+ * @param b Divisor
+ * @return Resultado de la operación
+ *********************************************************************************************************************/
 int operationDivide(int a, int b);
 /* === End of conditional blocks =================================================================================== */
 
