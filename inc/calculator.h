@@ -16,6 +16,10 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 
 SPDX-License-Identifier: MIT
 *********************************************************************************************************************/
+/** @file calculator.h
+ * @brief Declaración de una calculadora simple que soporta operaciones básicas.
+ * @author Bayona Franco Gabriel <
+
 
 #ifndef CALCULATOR_H_
 #define CALCULATOR_H_

@@ -18,9 +18,9 @@ SPDX-License-Identifier: MIT
 *********************************************************************************************************************/
 
 /** @file calculator.c
- ** @brief Plantilla para la creación de archivos de código fuente en lenguaje C
- **/
-
+ * @brief Implementación de una calculadora simple que soporta operaciones básicas.
+ * @author Bayona Franco Gabriel <
+ *
 /* === Headers files inclusions ==================================================================================== */
 
 #include "calculator.h"
